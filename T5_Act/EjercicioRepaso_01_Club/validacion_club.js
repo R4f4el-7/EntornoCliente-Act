@@ -57,9 +57,18 @@ document.addEventListener('DOMContentLoaded', () => {
         return true;
     }
     //validar a tiempo real input
-    document.getElementById('nombre').addEventListener('input', validarNombre);
-    document.getElementById('correo').addEventListener('input', validarCorreo);
-    document.getElementById('telefono').addEventListener('input', validarTelefono);
+    document.getElementById('nombre').addEventListener('input', () => {
+        validarNombre();
+        document.getElementById('mensajeFinal').textContent = '';
+    });
+    document.getElementById('correo').addEventListener('input', () => {
+        validarCorreo();
+        document.getElementById('mensajeFinal').textContent = '';
+    });
+    document.getElementById('telefono').addEventListener('input', () => {
+        validarTelefono();
+        document.getElementById('mensajeFinal').textContent = '';
+    });
 
     formulario.addEventListener('submit', (e) => {
         e.preventDefault();
