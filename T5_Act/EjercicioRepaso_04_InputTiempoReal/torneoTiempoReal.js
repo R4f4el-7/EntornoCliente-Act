@@ -1,3 +1,7 @@
+/*✔ Obtener elementos
+✔ Función de validación general
+✔ Eventos input → validación en tiempo real
+✔ Submit → prevenir recarg*/
 // Obtener elementos
 const nombre = document.getElementById("nombre_torneo");
 const rondas = document.getElementById("numero_rondas");

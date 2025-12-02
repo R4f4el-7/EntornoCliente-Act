@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Árbitros</title>
+</head>
+<body>
+<form id="formArbitro">
+    <label>Nombre del árbitro:</label>
+    <input type="text" id="nombre" />
+
+    <label>Nivel:</label>
+    <select id="nivel">
+        <option value="">--Selecciona--</option>
+        <option value="Local">Local</option>
+        <option value="Autonómico">Autonómico</option>
+        <option value="Nacional">Nacional</option>
+    </select>
+
+    <button type="submit">Registrar</button>
+</form>
+
+<div id="mensaje" style="display:none;"></div>
+
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>
+
