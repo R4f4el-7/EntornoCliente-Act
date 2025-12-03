@@ -20,9 +20,15 @@ export function configurarFormulario() {
     });
 
     inputNegras.addEventListener("input", () => {
-        mostrarError("err-negras",
-            validarNombre(inputNegras.value) ? "" : "El nombre solo puede tener letras y espacios."
-        );
+        let mensajeError = "";
+
+        if (!validarNombre(inputNegras.value)) {
+            mensajeError = "El nombre solo puede tener letras y espacios.";
+        } else if (!nombresDiferentes(inputBlancas.value, inputNegras.value)) {
+            mensajeError = "El nombre no puede ser igual al de blancas";
+        }
+
+        mostrarError("err-negras", mensajeError);
     });
 
     inputFecha.addEventListener("input", () => {
