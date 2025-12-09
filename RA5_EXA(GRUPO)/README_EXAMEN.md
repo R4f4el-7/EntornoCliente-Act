@@ -1,0 +1,21 @@
+El proyecto está organizado en módulos dentro de
+la carpeta /js/, separando la lógica en:
+validaciones (validators.js), expresiones
+regulares (regex.js), control del formulario
+(formController.js), gestión de datos en memoria
+(data.js), funciones de interfaz (ui.js) y el
+punto de entrada (main.js). Se utilizan los eventos
+DOMContentLoaded para inicializar el sistema, input
+para validar en tiempo real y submit para realizar
+la validación final del formulario. Además, el
+botón reset usa el evento click. Los datos se
+validan mediante expresiones regulares para nombres,
+resultados y formato de fecha, además de
+comprobaciones lógicas como evitar fechas futuras
+o que los nombres sean iguales. Se usa
+preventDefault() para evitar que el formulario
+recargue la página y así poder controlar
+la validación manualmente. La modularización
+permite separar responsabilidades: validación,
+UI, datos y control del flujo, facilitando el
+mantenimiento y la claridad del código.

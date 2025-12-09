@@ -29,7 +29,7 @@ const { Builder, By, Key, until } = require("selenium-webdriver");
         await ciudad.sendKeys("1234");
 
         // Esperar validaciones
-        await driver.sleep(500);
+        await driver.sleep(5000);
 
         let txtErrNombre = await driver.findElement(errorNombre).getText();
         let txtErrRondas = await driver.findElement(errorRondas).getText();
@@ -56,7 +56,7 @@ const { Builder, By, Key, until } = require("selenium-webdriver");
         await rondas.sendKeys("5");
         await ciudad.sendKeys("Madrid");
 
-        await driver.sleep(500);
+        await driver.sleep(5000);
 
         let botonHabilitado = await boton.getAttribute("disabled");
         console.log("Botón habilitado:", botonHabilitado === null);
