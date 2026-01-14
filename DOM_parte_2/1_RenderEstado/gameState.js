@@ -105,37 +105,61 @@ function renderPieces(state) {
 }
 renderPieces(gameState2);
 //----7----
-const celdasPeon = document.querySelectorAll('.square');
-celdasPeon.forEach(celda => {
-    celda.addEventListener('click', () => {
-        if(celda.textContent === "♙") {
-            limpiarHighlights()
-            //Resaltar posibles movimientos
-            let celdaPosteriorId = celda.id[0] + (parseInt(celda.id[1]) + 1);
-            const posiblesMovs = [celdaPosteriorId];
-            if ((parseInt(celda.id[1])) === 2) {
-                posiblesMovs.push(celda.id[0] + (parseInt(celda.id[1]) + 2));
-            }
-            posiblesMovs.forEach(posible => {
-                const celdaPosible = board.querySelector(`[data-pos='${posible}']`);
-                celdaPosible.classList.toggle('highlight');
-                //Mover peon a casilla resaltada
-                celdaPosible.addEventListener('click', () => {
-                    if(celdaPosible.classList.contains('highlight')){
-                        celdaPosible.textContent = "♙";
-                        celda.textContent = "";
-                        limpiarHighlights();
-                    }
-                })
-            })
+// Variable para llevar la pieza seleccionada
+let peonSeleccionado = null;
 
+// Listener único para todo el tablero
+board.addEventListener('click', (e) => {
+    const celdaClick = e.target;
+    console.log(celdaClick);
+    // Si no hay peón seleccionado, intentar seleccionar uno
+    if (!peonSeleccionado) {
+        if (celdaClick.textContent === "♙") {
+            peonSeleccionado = celdaClick;
+            limpiarHighlights();
+
+            // Resaltar posibles movimientos
+            const fila = parseInt(peonSeleccionado.id[1]);
+            const col = peonSeleccionado.id[0];
+            const posiblesMovs = [col + (fila + 1)];
+            if (fila === 2) posiblesMovs.push(col + (fila + 2));
+
+            posiblesMovs.forEach(pos => {
+                const cd = board.querySelector(`[data-pos='${pos}']`);
+                if (cd) cd.classList.add('highlight');
+            });
         }
-    })
+    } else {
+        // Si ya hay un peón seleccionado, intentar moverlo
+        if (celdaClick.classList.contains('highlight')) {
+            celdaClick.textContent = "♙";
+            peonSeleccionado.textContent = "";
+            peonSeleccionado = null;
+            limpiarHighlights();
+        } else if (celdaClick.textContent === "♙") {
+            // Seleccionar otro peón en cualquier momento
+            peonSeleccionado = celdaClick;
+            limpiarHighlights();
+
+            const fila = parseInt(peonSeleccionado.id[1]);
+            const col = peonSeleccionado.id[0];
+            const posiblesMovs = [col + (fila + 1)];
+            if (fila === 2) posiblesMovs.push(col + (fila + 2));
+
+            posiblesMovs.forEach(pos => {
+                const cd = board.querySelector(`[data-pos='${pos}']`);
+                if (cd) cd.classList.add('highlight');
+            });
+        } else {
+            // Click en celda vacía no resaltada → deseleccionar
+            peonSeleccionado = null;
+            limpiarHighlights();
+        }
+    }
 });
 
 function limpiarHighlights() {
     const celdas = document.querySelectorAll('.square');
-    celdas.forEach(celda => {
-        celda.classList.remove('highlight');
-    });
+    celdas.forEach(c => c.classList.remove('highlight'));
 }
+

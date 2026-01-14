@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM - Clonar, Fragmentos y Remove</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        ul {
+            margin-bottom: 20px;
+        }
+
+        button {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Clonar nodos</h2>
+<ul id="lista">
+    <li id="original">Elemento original</li>
+</ul>
+
+<button id="clonar">Clonar elemento</button>
+
+<hr>
+
+<h2>DocumentFragment (rendimiento)</h2>
+<div id="contenedor"></div>
+
+<button id="crear">Crear líneas</button>
+
+<hr>
+
+<h2>Eliminar elemento</h2>
+<p id="texto">Este texto será eliminado</p>
+
+<button id="eliminar">Eliminar texto</button>
+
+<script src="fragmentClonarEliminar.js"></script>
+</body>
+</html>
