@@ -1,16 +1,16 @@
 
 
 const gameState = {
-    pawns: ["♙", "a", "♙", "♙", "♙", "♙", "b", "♙"]
+    pawns: ["♙", "♙", "♙", "♙", "♙", "♙", "♙", "♙"]
 }
 //----1----
 const board = document.getElementById("board");
 function renderPawns(state) {
     board.textContent = "";
-    for (const pawn of state.pawns ) {
-        const pawnElement = document.createElement("div");
-        pawnElement.textContent = pawn;
-        board.appendChild(pawnElement);
+    for (const peon of state.pawns ) {
+        const peonElemento = document.createElement("div");
+        peonElemento.textContent = peon;
+        board.appendChild(peonElemento);
     }
 }
 renderPawns(gameState)
@@ -105,20 +105,20 @@ function renderPieces(state) {
 }
 renderPieces(gameState2);
 //----7----
-// Variable para llevar la pieza seleccionada
+//Variable para llevar la pieza seleccionada
 let peonSeleccionado = null;
 
-// Listener único para todo el tablero
+//Listener único para odo el tablero
 board.addEventListener('click', (e) => {
     const celdaClick = e.target;
     console.log(celdaClick);
-    // Si no hay peón seleccionado, intentar seleccionar uno
+    //Si no hay peón seleccionado, intentar seleccionar uno
     if (!peonSeleccionado) {
         if (celdaClick.textContent === "♙") {
             peonSeleccionado = celdaClick;
             limpiarHighlights();
 
-            // Resaltar posibles movimientos
+            //Resaltar posibles movimientos
             const fila = parseInt(peonSeleccionado.id[1]);
             const col = peonSeleccionado.id[0];
             const posiblesMovs = [col + (fila + 1)];
@@ -130,14 +130,15 @@ board.addEventListener('click', (e) => {
             });
         }
     } else {
-        // Si ya hay un peón seleccionado, intentar moverlo
+        //Si ya hay un peón seleccionado, intentar moverlo
         if (celdaClick.classList.contains('highlight')) {
             celdaClick.textContent = "♙";
             peonSeleccionado.textContent = "";
             peonSeleccionado = null;
+            nextMove()
             limpiarHighlights();
         } else if (celdaClick.textContent === "♙") {
-            // Seleccionar otro peón en cualquier momento
+            //Seleccionar otro peón en cualquier momento
             peonSeleccionado = celdaClick;
             limpiarHighlights();
 
@@ -151,7 +152,7 @@ board.addEventListener('click', (e) => {
                 if (cd) cd.classList.add('highlight');
             });
         } else {
-            // Click en celda vacía no resaltada → deseleccionar
+            //Click en celda vacía no resaltada -> deseleccionar
             peonSeleccionado = null;
             limpiarHighlights();
         }
@@ -162,4 +163,46 @@ function limpiarHighlights() {
     const celdas = document.querySelectorAll('.square');
     celdas.forEach(c => c.classList.remove('highlight'));
 }
+//----8----
+const gameState3 = {
+    turn: "Blancas",
+    moves: 0
+};
+const panel = document.createElement("div");
+panel.id = "panel";
+document.body.appendChild(panel);
+
+function updatePanel(state){
+    panel.textContent = `Turno: ${state.turn} | Movimientos: ${state.moves}`;
+}
+function nextMove(){
+    gameState3.moves++;
+    gameState3.turn = gameState3.turn === "Blancas" ? "Negras" : "Blancas";
+    updatePanel(gameState3);
+}
+updatePanel(gameState3)
+//----9----
+//Función para deshacer el último movimiento en el panel
+function undoMove(){
+    if(gameState3.moves > 0){
+        gameState3.moves--;
+        gameState3.turn = gameState3.turn === "Blancas" ? "Negras" : "Blancas";
+        updatePanel(gameState3);
+    }
+}
+document.addEventListener("keydown", (event) => {
+    if (event.key === "r") {
+        location.reload();
+    }else if (event.key === "u") {
+        undoMove();
+    }
+});
+const mostrarEstadoBtn = document.createElement("button");
+mostrarEstadoBtn.textContent = "Mostrar Estado del Juego";
+document.body.appendChild(mostrarEstadoBtn);
+
+mostrarEstadoBtn.addEventListener("click", () => {
+    console.log(gameState3);
+});
+
 
