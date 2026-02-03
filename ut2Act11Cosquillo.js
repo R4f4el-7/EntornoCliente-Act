@@ -63,3 +63,13 @@ function esTurnoDeBlancas(turno){
 
 /*Comentario de Manu: inicia la partida*/
 iniciarPartida();
+
+import React from "react";
+
+const titulo = React.createElement(
+    'h1',
+    { className: 'main-title' },
+    'Ejercicio 01 - Título'
+);
+
+export default titulo;

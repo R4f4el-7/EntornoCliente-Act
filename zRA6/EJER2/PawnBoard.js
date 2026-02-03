@@ -53,36 +53,34 @@ export default function PawnBoard() {
             moverTorre(origen, destino, pieza);
         }
     }
-    /*function mover torre  que se bloque si hay un peon es su camino*/
     function moverTorre(origen, destino, pieza) {
 
-        const filaOrigen = Math.floor(origen / 8);
-        const filaDestino = Math.floor(destino / 8);
-
-        const colOrigen = origen % 8;
-        const colDestino = destino % 8;
-
-        // Debe moverse en línea recta
-        const mismaFila = filaOrigen === filaDestino;
-        const mismaColumna = colOrigen === colDestino;
-
-        if (!mismaFila && !mismaColumna) return;
-
         const nuevoTablero = [...tablero];
-
-        // Captura
-        if (
-            tablero[destino] &&
-            tablero[destino].color === pieza.color
-        ) {
-            return;
+        const filaOrigen = Math.floor(origen / 8);
+        const columnaOrigen = origen % 8;
+        const filaDestino = Math.floor(destino / 8);
+        const columnaDestino = destino % 8;
+        if (filaOrigen === filaDestino) {
+            const paso = columnaDestino > columnaOrigen ? 1 : -1;
+            for (let col = columnaOrigen + paso; col !== columnaDestino; col += paso) {
+                if (tablero[filaOrigen * 8 + col]) {
+                    return;
+                }
+            }
+            if (!tablero[destino] || tablero[destino].color !== pieza.color) {
+                mover(origen, destino, nuevoTablero, pieza);
+            }
+        } else if (columnaOrigen === columnaDestino) {
+            const paso = filaDestino > filaOrigen ? 1 : -1;
+            for (let fila = filaOrigen + paso; fila !== filaDestino; fila += paso) {
+                if (tablero[fila * 8 + columnaOrigen]) {
+                    return;
+                }
+            }
+            if (!tablero[destino] || tablero[destino].color !== pieza.color) {
+                mover(origen, destino, nuevoTablero, pieza);
+            }
         }
-
-        nuevoTablero[origen] = null;
-        nuevoTablero[destino] = pieza;
-
-        setTablero(nuevoTablero);
-        setSeleccionada(null);
     }
 
     function moverPeon(origen, destino, pieza) {
