@@ -3,15 +3,12 @@ const { useState } = React;
 export default function Aperturas() {
     const [movimientos, setMovimientos] = useState([]);
     const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [jugadaUsuario, setJugadaUsuario] = useState([]);
 
     const cargarAperturas = () => {
         setError(null);
 
         fetch("https://explorer.lichess.ovh/master")
             .then(response => {
-                setLoading(true);
                 if (!response.ok) {
                     throw new Error("Error en la petición");
                 }
@@ -20,14 +17,11 @@ export default function Aperturas() {
             .then(data => {
                 // Tomamos solo los primeros 5 movimientos
                 const primerosCinco = data.moves.slice(0, 5);
-                const filtrado = data
                 setMovimientos(primerosCinco);
-                setLoading(false);
             })
             .catch(err => {
                 setError("Error al cargar las aperturas");
                 setMovimientos([]);
-                setLoading(false);
             });
     };
 
@@ -61,12 +55,6 @@ export default function Aperturas() {
                     mov.san
                 )
             )
-        ),
-        //Input
-        React.createElement(
-            "input",
-            null,
-            null
         )
     );
 }
