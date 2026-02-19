@@ -1,0 +1,58 @@
+Summary,Key,Description,Link,Estimate
+"Ej1.1,1.2,1.3.- Pide nombres y numJugadas, valida numJugadas",PP-1,"1.	Pide al usuario los nombres de los dos jugadores.
+2.	Pregunta cuántas jugadas tendrá la partida.
+3.	Valida que el número de jugadas sea un entero mayor que 0.",,M
+Ej1.4.-Simular Jugadas,PP-2,"4.	Simular jugadas
+      a.	Cada jugada genera un tiempo aleatorio entre 10 y 30 segundos.
+      b.	Registra y muestra el tiempo de cada jugada en consola
+                (ej. Jugada 3: 25 segundos).
+",,
+"Ej1.5,1.6,1.7-Cálculos y resumen",PP-3,"5.	Calcula:
+a.	Tiempo total de cada jugador.
+b.	Promedio de segundos por jugada.
+6.	Muestra un resumen en consola con el jugador más rápido y la media de cada jugador.
+7.	Si ambos tienen la misma media, muestra el mensaje ""Empate técnico"".
+",,L
+"Ej2.1,2.2.-Pedir datos y validar",PP-4,"1.	Solicita al usuario el número total de jugadas.
+2.	Valida que sea un número mayor que 0.
+",,XS
+"Ej2.3,2.4.-Bucle y cálculos",PP-5,"3.	Usa un bucle para simular cada jugada:
+a.	Genera un número aleatorio entre 1 y 6.
+b.	Si el número es múltiplo de 3, considera que ha habido una captura.
+c.	Muestra el resultado de cada jugada en consola.
+4.	Al finalizar:
+a.	Calcula el porcentaje de jugadas con captura.
+b.	Si el porcentaje es mayor al 20%, muestra “Partida agresiva”; si no, “Partida tranquila”.
+",,
+Ej2.5.- Nueva ventana e informe,PP-6,"5.	Abre una nueva ventana y genera un informe dinámico que muestre:
+a.	Total de jugadas.
+b.	Total de capturas.
+c.	Porcentaje de capturas.
+d.	Tipo de partida (agresiva o tranquila).
+",,
+Ej2.6.- Personalización ventana,PP-7,"6.	Personaliza el resultado en la nueva ventana:
+a.	Texto rojo si la partida fue agresiva.
+b.	Texto verde si fue tranquila.
+c.	Añade el título ""Informe de Capturas"".
+d.	Ajusta el tamaño de la ventana al contenido.
+",,
+"Ej3.1,3.2.- Solicitar datos y validación",PP-8,"1.	Solicita:
+a.	Nombre del jugador con blancas y del jugador con negras.
+b.	Resultado (“Ganan blancas”, “Ganan negras”, “Tablas”).
+2.	Valida que los campos no estén vacíos.
+",,
+Ej3.3.- localStorage,PP-9,"3.	Usa localStorage para:
+a.	Guardar la información de la última partida (nombre de los jugadores y el resultado).
+b.	Incrementar un contador total de partidas jugadas.
+",,
+"Ej3.4,3.5.- Ventana nueva e informe",PP-10,"4.	Abre una nueva ventana llamada “Resumen del torneo”.
+5.	Genera un informe HTML con:
+a.	Título del torneo.
+b.	Datos de la última partida (jugadores y resultado).
+c.	Número total de partidas jugadas.
+",,
+Ej3.6.-personaliza la ventana,PP-11,"6.	Personaliza la ventana:
+a.	Fondo gris claro.
+b.	Fuente monoespaciada.
+c.	Texto azul si gana blancas, negro si gana negras, gris si tablas.
+",,
