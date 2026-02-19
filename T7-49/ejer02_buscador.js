@@ -1,13 +1,11 @@
-import { useEffect, useState } from "react";
-
-export default function Ejercicio2() {
+function App() {
     const [movimientos, setMovimientos] = useState([]);
-    const [busqueda, setBusqueda] = useState("");
+    const [busqueda, setBusqueda] = useState('');
     const [filtrados, setFiltrados] = useState([]);
 
     useEffect(() => {
         async function cargar() {
-            const res = await fetch("/movimientos.json");
+            const res = await fetch('movimientos.json');
             const data = await res.json();
             setMovimientos(data.movimientos);
             setFiltrados(data.movimientos);
@@ -24,20 +22,18 @@ export default function Ejercicio2() {
         setFiltrados(f);
     }, [busqueda, movimientos]);
 
-    return (
-        <>
-            <input
-                placeholder="Buscar movimiento"
-                onChange={e => setBusqueda(e.target.value)}
-            />
-
-            <ul>
-                {filtrados.map((m, i) => (
-                    <li key={i}>
-                        {m.pieza}: {m.from} → {m.to}
-                    </li>
-                ))}
-            </ul>
-        </>
-    );
+    return e('div', null, [
+        e('input', {
+            key: 'input',
+            onChange: ev => setBusqueda(ev.target.value),
+            placeholder: 'Buscar...'
+        }),
+        e(
+            'ul',
+            { key: 'lista' },
+            filtrados.map((m, i) =>
+                e('li', { key: i }, `${m.pieza}: ${m.from} → ${m.to}`)
+            )
+        )
+    ]);
 }

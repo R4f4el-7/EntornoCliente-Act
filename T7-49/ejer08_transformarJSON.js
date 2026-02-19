@@ -1,28 +1,25 @@
-import { useEffect, useState } from "react";
-
-export default function Ejercicio8() {
+function App() {
     const [lista, setLista] = useState([]);
 
     useEffect(() => {
         async function cargar() {
-            const res = await fetch("/movimientos.json");
+            const res = await fetch('movimientos.json');
             const data = await res.json();
 
-            const transformados = data.map(m =>
-                `Peón de ${m.from} a ${m.to}`
-            );
+            const traducidos = data.map(m => {
+                const piezas = { pawn: 'Peón' };
+                return `${piezas[m.piece]} de ${m.from} a ${m.to}`;
+            });
 
-            setLista(transformados);
+            setLista(traducidos);
         }
 
         cargar();
     }, []);
 
-    return (
-        <ul>
-            {lista.map((t, i) => (
-                <li key={i}>{t}</li>
-            ))}
-        </ul>
+    return e(
+        'ul',
+        null,
+        lista.map((txt, i) => e('li', { key: i }, txt))
     );
 }
