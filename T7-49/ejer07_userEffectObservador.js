@@ -1,22 +1,19 @@
-import { useEffect, useState } from "react";
-
-export default function Ejercicio7() {
-    const [ultimoMovimiento, setUltimoMovimiento] = useState(null);
-    const [mensaje, setMensaje] = useState("");
+function App() {
+    const [ultimo, setUltimo] = useState(null);
+    const [mensaje, setMensaje] = useState('');
 
     useEffect(() => {
-        if (ultimoMovimiento) {
-            setMensaje(`Nuevo movimiento: ${ultimoMovimiento}`);
+        if (ultimo) {
+            setMensaje(`Nuevo movimiento: ${ultimo}`);
         }
-    }, [ultimoMovimiento]);
+    }, [ultimo]);
 
-    return (
-        <>
-            <button onClick={() => setUltimoMovimiento("e2 → e4")}>
-                Hacer movimiento
-            </button>
-
-            <p>{mensaje}</p>
-        </>
-    );
+    return e('div', null, [
+        e(
+            'button',
+            { key: 1, onClick: () => setUltimo('Peón e2 → e4') },
+            'Mover'
+        ),
+        e('p', { key: 2 }, mensaje)
+    ]);
 }

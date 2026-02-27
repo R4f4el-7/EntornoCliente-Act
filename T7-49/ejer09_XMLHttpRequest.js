@@ -1,36 +1,32 @@
-import { useEffect, useState } from "react";
+function cargarXHR(cb) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'movimientos.json');
 
-export default function Ejercicio9() {
-    const [xhrData, setXhrData] = useState(null);
-    const [fetchData, setFetchData] = useState(null);
+    xhr.onload = () => cb(JSON.parse(xhr.responseText));
+    xhr.send();
+}
+
+async function cargarFetch() {
+    const res = await fetch('movimientos.json');
+    return await res.json();
+}
+
+function App() {
+    const [datos, setDatos] = useState(null);
 
     useEffect(() => {
-        // XMLHttpRequest
-        const xhr = new XMLHttpRequest();
-        xhr.open("GET", "/movimientos.json");
-        xhr.onload = () => {
-            setXhrData(JSON.parse(xhr.responseText));
-        };
-        xhr.send();
+        cargarXHR(data => setDatos(data.movimientos));
 
-        // Fetch
-        fetch("/movimientos.json")
-            .then(r => r.json())
-            .then(setFetchData);
+        // Alternativa fetch:
+        // cargarFetch().then(d => setDatos(d.movimientos));
     }, []);
 
-    return (
-        <>
-            <h3>XMLHttpRequest</h3>
-            <pre>{JSON.stringify(xhrData, null, 2)}</pre>
-
-            <h3>Fetch</h3>
-            <pre>{JSON.stringify(fetchData, null, 2)}</pre>
-
-            <p>
-                👉 Fetch es más legible porque usa promesas y evita código
-                imperativo complejo.
-            </p>
-        </>
+    return e(
+        'pre',
+        null,
+        datos
+            ? 'fetch es más legible por async/await\n\n' +
+            JSON.stringify(datos, null, 2)
+            : 'Cargando…'
     );
 }

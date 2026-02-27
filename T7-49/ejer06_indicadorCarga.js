@@ -1,6 +1,4 @@
-import { useState } from "react";
-
-export default function Ejercicio6() {
+function App() {
     const [datos, setDatos] = useState(null);
     const [loading, setLoading] = useState(false);
 
@@ -8,28 +6,23 @@ export default function Ejercicio6() {
         setLoading(true);
 
         setTimeout(async () => {
-            const res = await fetch("/movimientos.json");
+            const res = await fetch('movimientos.json');
             const data = await res.json();
             setDatos(data.movimientos);
             setLoading(false);
-        }, 2000);
+        }, 1500);
     }
 
-    return (
-        <>
-            <button onClick={cargar}>Cargar</button>
-
-            {loading && <p>Cargando…</p>}
-
-            {datos && (
-                <ul>
-                    {datos.map((m, i) => (
-                        <li key={i}>
-                            {m.pieza}: {m.from} → {m.to}
-                        </li>
-                    ))}
-                </ul>
-            )}
-        </>
-    );
+    return e('div', null, [
+        e('button', { key: 1, onClick: cargar }, 'Cargar'),
+        loading && e('p', { key: 2 }, 'Cargando…'),
+        datos &&
+        e(
+            'ul',
+            { key: 3 },
+            datos.map((m, i) =>
+                e('li', { key: i }, `${m.pieza}: ${m.from} → ${m.to}`)
+            )
+        )
+    ]);
 }

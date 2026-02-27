@@ -1,3 +1,3 @@
-export function moverPieza(origen, destino){
-    console.log(`La pieza se mueve desde ${origen} hasta ${destino}`);
+export const moverPieza = (origen, destino) => {
+    return `La pieza se mueve de ${origen} a ${destino}`;
 }
