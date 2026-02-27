@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "posicionInicial": "e4",
+    "movimientos": ["f6","h5"],
+    "dificultad": "media"
+  },
+  {
+    "id": 2,
+    "posicionInicial": "d4",
+    "movimientos": ["c6","e8"],
+    "dificultad": "alta"
+  },
+  {
+    "id": 3,
+    "posicionInicial": "g1",
+    "movimientos": ["h3","f4"],
+    "dificultad": "media"
+  },
+  {
+    "id": 4,
+    "posicionInicial": "b1",
+    "movimientos": ["c3","d5","f6"],
+    "dificultad": "media-alta"
+  },
+  {
+    "id": 5,
+    "posicionInicial": "a1",
+    "movimientos": ["b3","c5","d7"],
+    "dificultad": "alta"
+  },
+  {
+    "id": 6,
+    "posicionInicial": "h8",
+    "movimientos": ["f7","e5","d3"],
+    "dificultad": "alta"
+  },
+  {
+    "id": 7,
+    "posicionInicial": "c2",
+    "movimientos": ["d4","f5","h6"],
+    "dificultad": "media"
+  },
+  {
+    "id": 8,
+    "posicionInicial": "f3",
+    "movimientos": ["g5","e6","c7"],
+    "dificultad": "media-alta"
+  },
+  {
+    "id": 9,
+    "posicionInicial": "e1",
+    "movimientos": ["f3","g5","h7"],
+    "dificultad": "media"
+  },
+  {
+    "id": 10,
+    "posicionInicial": "d2",
+    "movimientos": ["e4","g5","h7"],
+    "dificultad": "media-alta"
+  },
+  {
+    "id": 11,
+    "posicionInicial": "c6",
+    "movimientos": ["e7","g6","h4"],
+    "dificultad": "alta"
+  },
+  {
+    "id": 12,
+    "posicionInicial": "f5",
+    "movimientos": ["h6","g8","e7","d5"],
+    "dificultad": "alta"
+  },
+  {
+    "id": 13,
+    "posicionInicial": "b4",
+    "movimientos": ["c6","e7","g6","h4"],
+    "dificultad": "muy alta"
+  },
+  {
+    "id": 14,
+    "posicionInicial": "g7",
+    "movimientos": ["e8","d6","c4"],
+    "dificultad": "media-alta"
+  },
+  {
+    "id": 15,
+    "posicionInicial": "a6",
+    "movimientos": ["b8","d7","f6","h5"],
+    "dificultad": "muy alta"
+  },
+  {
+    "id": 16,
+    "posicionInicial": "h1",
+    "movimientos": ["g3","e4","d6"],
+    "dificultad": "media"
+  },
+  {
+    "id": 17,
+    "posicionInicial": "e8",
+    "movimientos": ["d6","c4","a5"],
+    "dificultad": "alta"
+  },
+  {
+    "id": 18,
+    "posicionInicial": "c3",
+    "movimientos": ["d5","f6","h7"],
+    "dificultad": "media"
+  },
+  {
+    "id": 19,
+    "posicionInicial": "f1",
+    "movimientos": ["g3","h5","f6"],
+    "dificultad": "media-alta"
+  },
+  {
+    "id": 20,
+    "posicionInicial": "d7",
+    "movimientos": ["f8","h7","g5","e4"],
+    "dificultad": "muy alta"
+  }
+]
